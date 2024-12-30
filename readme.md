@@ -295,7 +295,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     npm install lucide-react
     ```
 
-  6. **NEON.TECH POSTGRESsql Database + Fulltext Search:**
+  6. **NEON.TECH PostgreSQL Database + Fulltext Search:**
       <hr>
       In a NUTSHELL: neon.tech ist eine moderne serverless PostgresQL Plattform, die es ermöglicht, Datenbanken schnell und einfach zu erstellen und zu verwalten. Dabei können Datenbanken und Branches bei verschiedenen Cloudanbietern und Regionen gestartet werden. Entsprechend dem “serverless” Ansatz stoppt jeder Branch automatisch wieder, wenn der Traffic aufhört. Neon is a serverless, scalable implementation of PostgreSQL that you can run on-premise or try through its managed service.
 
@@ -409,6 +409,35 @@ The search parameters are an Object, each of these has a dynamic key which is a 
       # And add to the JSON file: "tsx": "tsx", in the scripts section
       # After compiling, it's important to copy paste the URL in the browser https://local.drizzle.studio/
     ```
+
+    9.4   Creating an account on Upstash Vector:
+
+     - We define a few things such as dimension count* (1536) and Similarity Function* (cosine) and then we can create a new database.
+     - The token we get can be connected and pasted into the .env file for security reasons.
+     - Now we should have a postgres database and a Upstash vector database running in parallel.
+  
+    ```bash
+      # https://console.upstash.com/vector/472ec71e-d8f0-4281-bc1c-9dae9212e1bd?teamid=0
+    ```
+
+10. **OpenAI - OpenAI TypeScript and JavaScript API Library**
+    <hr>
+    In a NUTSHELL: The OpenAI API provides a simple interface to state-of-the-art AI models for natural language processing, image generation, semantic search, and speech recognition. We will need it for the semantic search querying with Upstash Vector to increase the search accuracy by querying semantically related results.
+
+    **But what is an API?** 
+    => The API - also known as the programming interface - therefore enables applications to communicate with each other. The API is not the database or even the server, but the code that regulates the access points for the server and enables communication. This speeds up and simplifies data exchange between different systems many times over.
+
+    - Simply install it with npm in your terminal:
+    ```bash
+    npm install openai
+    ```
+
+    10.1  Getting used to the OpenAI developer Platform:
+
+     - We need our API key to connect to the OpenAI API. We can find it in the dashboard: https://platform.openai.com/docs/overview
+     - Searching for "API keys" and copy the secret key to the .env file
+
+    <br />
 
     <br />
     <br />
