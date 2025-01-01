@@ -4,6 +4,8 @@
 import { openai } from './openai'
 
 
+
+
 export const vectorize = async (input: string): Promise<number[]> => { // respond as a vector and convert it:
   const embeddingResponse = await openai.embeddings.create({
     input,
