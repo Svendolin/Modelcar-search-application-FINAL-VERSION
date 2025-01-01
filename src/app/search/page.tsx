@@ -70,21 +70,26 @@ if(products.length < 3) {
   products.push(...vectorProducts) // We are pushing the vectorProducts into the products array
 }
 
-// Render out everything we get from the database:
 
+
+
+/* This section is for the case when we have no results to show to the user
+Like we didn't get anything relevant from our database or from the Sematic Search
+With === 0 we are checking if the length of the products array is 0 like an EMPTY STATE */
+// Btw X is the icon for the close button from lucide-react
 if (products.length === 0) {
   return (
     <div className='text-center py-4 bg-white shadow-md rounded-b-md'>
-      <X className='mx-auto h-8 w-8 text-gray-400' />
+      <X className='mx-auto h-8 w-8 text-gray-400' /> 
       <h3 className='mt-2 text-sm font-semibold text-gray-900'>No results</h3>
       <p className='mt-1 text-sm mx-auto max-w-prose text-gray-500'>
         Sorry, we couldnt find any matches for{' '}
-        <span className='text-green-600 font-medium'>{query}</span>.
+        <span className='text-green-600 font-semibold'>{query}</span>.
       </p>
     </div>
   )
 }
-
+// The area where we are rendering the products in a list block below the search bar of 3 products
 return (
   <ul className="py-4 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md">
     {products.slice(0, 3).map((product) => (

@@ -1,19 +1,22 @@
 "use client";
+// The place where we synchronise the URL with the SearchBar Imput field
+// And some more logic to make the search functionality work
 
 import { Loader2, Search } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { useRef, useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-{/* SearchBar component */}
+{/* Getting the search params into our SearchBar component */}
 
 const SearchBar = () => {
-
+  const searchParams = useSearchParams()
+  const defaultQuery = searchParams.get('query') || ''
   const inputRef = useRef<HTMLInputElement>(null)
   const [isSearching, startTransition] = useTransition()
   const router = useRouter()
-  const [query, setQuery] = useState<string>('')
+  const [query, setQuery] = useState<string>(defaultQuery)
 
   {/* Search functionality => Pushing the search query into the URL thanks to the router above */}
   const search = () => { 
