@@ -410,6 +410,8 @@ The search parameters are an Object, each of these has a dynamic key which is a 
       # After compiling, it's important to copy paste the URL in the browser https://local.drizzle.studio/
     ```
 
+   - **=> IMPORTANT:** Now we can host the database content here https://local.drizzle.studio/ or directly in the Neon.tech PostgreSQL dashboard which is connected with each other: https://console.neon.tech/app/projects/dry-heart-80939055/branches/br-withered-fog-a240j34l/tables?database=searchapplication
+
     9.4   Creating an account on Upstash Vector:
 
      - We define a few things such as dimension count* (1536) and Similarity Function* (cosine) and then we can create a new database.
@@ -419,6 +421,8 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     ```bash
       # https://console.upstash.com/vector/472ec71e-d8f0-4281-bc1c-9dae9212e1bd?teamid=0
     ```
+
+    - **=> IMPORTANT: Wie werden die zueinander upgedated? PostgreSQL und Upstash?**
 
 10. **OpenAI - OpenAI TypeScript and JavaScript API Library**
     <hr>
@@ -488,10 +492,10 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 ***
 ## DEBUGGING and ERROR LOG ❌
 ***
-2 issues have been detected, 2 answers have been given, 2 solutions have been made.
+3 issues have been detected, 3 answers have been given, 3 solutions have been made.
 Check out our ISSUES SECTION for more information: [HERE](https://github.com/Svendolin/Bachelor-Project-SKA2025/issues)
 
 | Questions / Issues | Anwers | Solutions |
 |:--------------|:-------------:|--------------:|
-| 2 | 2 | 2 |
+| 3 | 3 | 3 |
 

@@ -21,12 +21,12 @@ async function main() {
     {
       imageId: 'dark_down_jacket_1.png',
       description:
-        'A sleek, insulated down jacket designed for chilly urban adventures. Its slim fit and dark hue make it a versatile addition to any winter wardrobe.',
+        'A sleeky, insulated down jacket designed for chilly urban adventures. Its slim fit and dark hue make it a versatile addition to any winter wardrobe.',
     },
     {
       imageId: 'dark_down_jacket_2.png',
       description:
-        'This durable down jacket offers exceptional warmth with a touch of elegance. Perfect for those who demand both style and functionality in cold weather.',
+        'Thisss durable down jacket offers exceptional warmth with a touch of elegance. Perfect for those who demand both style and functionality in cold weather.',
     },
     {
       imageId: 'dark_fleece_jacket_1.png',

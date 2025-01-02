@@ -30,7 +30,21 @@ const Page = async ({ params }: PageProps) => {
 
   if (!product) return notFound()
   // BackButton is a custom component that we have created to navigate back to the previous page.
-// Up next the followning lines will be used to display the product details like name, price, description, image, etc.
+  /* Up next the followning lines will be:
+
+  - BackButton Component to get back to the 3  models overview
+  - Product name (Title)
+  - Product image
+  - Product price (toFixed(2) means that the price will be displayed with 2 decimal places)
+  - Product description
+  - A message that says that the product is eligible for express delivery
+  - A button to add the product to the cart
+  - A message that says that the product is eligible for a 30-day return guarantee
+
+  (Many of the icons are from Lucide, a library of icons that we are using in this project)
+  
+  
+  */
   return (
     <div className='py-8 pb-8 px-12 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md'>
       <div>
