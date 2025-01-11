@@ -5,7 +5,7 @@
 
 # ✔ - Full Stack Search Engine - ✔
 
-_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a full stack search modelcar search engine application with react (next.js) using postgres full-text search and semantic quaring with Upstash Vector to use it on a separate subpage depending on the initial situation for my website: www.toycarsaddict.club. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
+_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a full stack modelcar search engine application with react (next.js) using postgres full-text search and semantic quaring with Upstash Vector to use it on a separate subpage depending on the initial situation for my website: www.toycarsaddict.club. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
         
 | TYPE | LINK | 
 |:--------------| :--------------|
@@ -79,7 +79,7 @@ So I decided to build my own full stack search engine on a separate subpage.
 
 
 **Loading States:**
-* Smooth loading states while we are waiting for the search results = With Next.js very enjoyable => In Miliseconcs List from backend 
+* Smooth loading states while we are waiting for the search results = With Next.js very enjoyable => In Miliseconds getting a list from backend 
 
 **Implementig the Technique of SEMANTIC SEARCH QUERYING Upstash Vector:**
 * Instant Matches from Database => Also from those which are similar in meaning but dont exactly match the search term
@@ -117,9 +117,7 @@ Building Process: 🔧
 
   1.4) **Tailwind** ist ein Utility-First-CSS-Framework, das seinen Nutzern Utility Klassen bereitstellt und einheitliche Vorganben mitbringt, wie sich das Design verhalten wird. So brauche ich hier nicht ewigs Zeit in das Styling von einzelnen CSS Elementen zu verbringen. Mit dem CSS Tailwind Intellisense Extension für Visual Studio Code kann ich die Utility Klassen direkt im Editor sehen und auswählen und habe trotzdem mein CSS.
 
-  1.5) **Lucide.dev** ist eine Icon Library mit einer Vielzahl von SVG Icons, die ich hier benutze, um das Design etwas aufzupeppen.
-  
-  * Responsive Design so user can test it on mobile devices as well as on desktop
+  1.5) **Lucide.dev** ist eine Icon Library mit einer Vielzahl von SVG Icons, die ich hier benutze, um das Design etwas aufzupeppen. Die Elemente von ShadCN und Lucide sollten sich auch responsive auf das mobile Device verhalten.
 
 **2) Searchbar - Creating an intuitive searchbar which isnt that complicated:**
   * Intuitive searchbar with a search icon and a text field and accessible to use
@@ -130,12 +128,27 @@ Building Process: 🔧
   * Wir können ein Array von Abfragen (Array of queries) oder eine undefinierte Abfrage (undefined query) nicht verarbeiten, insbesondere wenn es sich nicht um eine Zeichenkette (string) handelt. Weiterleitung zur Stammseite. In search.tsx passiert die ganze Magie
 }
 
-**3) Database - Initializing and connecting the application to a vectorized database:**
-  * 49:40 - Postgres Full Text Search
-  * 57:20 - Upstash Semantic Quering
+**3) Database - Initializing / connecting the application to serverless and vectorized databases:**
+
+  * **3.1) Postgres Full Text Search:**
+    * Perfect way to implementing quering logic, we filter the products for the search query
+    * We query for Ferrari: In PostgreSQL we do a complete full-text search based on the title name and the description **=> Getting the most relevant results by literally matching the search query!**
+    * If the title AND description contain the term Ferrari, we must display the most relevant product at the top
+    * If the search term corresponds 1:1 to a vehicle in the table (e.g. from the title), e.g. "Ferrari F40", then logically only the exact result is displayed
+  * **3.2) Upstash Semantic Quering:**
+    * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> Upstash takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
+    * Vectoren sind beispielsweise Javascript Arrays, eine statische Datenstruktur: In jedem Index wird ein Zahlenwert gespeichert, z.B [0.3,0.8,0.95]
+    * In Upstash definieren wir eine Dimension, bspw. 1536 => Somit haben wir 1536 Nummern in dieser Array, solange wird diese auch
+    * Diese nummerische representation der Bedeutung des Textes können wir mit OpenAI lösen 
+    * Somit ist "Ferari F40" und "Ferrari F40" trotz Schreibfehler semantically similar in meaning
   
 **4) Product Catalogue - Creating a product catalogue with a list of model cars + Product Preview**
 
+4.1) **Faker.js** bietet mir die Möglichkeit eine gewisse Anzahl and realistischen aber faken Daten in meine Tabelle aus vorest 26 (gemäss Alphabet) Einheiten einzubetten, mit falschen Preisen, falschen Inhalten etc. Die Inhalte werden aber trotzdem korrekt gelesen und entsprechend ihrer DNA in die Tabellen gefüllt.
+
+4.2) **Drizzle.orm** erlaubt mir, SQL-Abfragen direkt in meinem Code zu schreiben, ist hochsicher und unterstützt PostgreSQL. Es ist meine Brücke zwischen der objektorientierten Suchapplikation und der relationalen Datenbank von Neontech PostgreSQL. Mit dem Drizzle Kit Studio kann ich direkt Anpassungen vornehmen.
+
+4.3) **Public Folder** ist der Bereich, wo meine Modellautobilder abgelegt werden. Da ich beruflich viele Modelle fotografiere, werde ich diese professionell in passendem Grössenverhältnis gemäss Programmierung abspeichern und die Fotos selbst in einer gut ausgeleuchteten Fotobox schiessen.
 
 
 <br />
@@ -168,7 +181,6 @@ We can simply destructure the search params as the props that are passed to the 
 The search parameters are an Object, each of these has a dynamic key which is a type of string. The Value will be a string or a string array or naturally undefined if the search query is not passed at all)
 
 
-<br />
 <br />
 
 
@@ -335,7 +347,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     <hr>
     In a NUTSHELL: Drizzle ORM ist ein TypeScript-basiertes Daten-Framework. ORMs wie Drizzle helfen bei der Verbindung mit einem Datenbankserver und der Ausführung von Abfragen und Operationen über objektbasierte APIs. In einem JavaScript/TypeScript ORM wird jede Art von Datenbankentität durch einen JS/TS-Prototyp dargestellt. Für jeden Prototyp werden Tabellen erzeugt, Spalten werden durch Felder und Attribute dargestellt, während Zeilen für jede Instanz des Prototyps erstellt werden.
 
-    - Drizzle's official website and docs: https://orm.drizzle.team/docs/overview
+    - Drizzle's official website and docs: https://orm.drizzle.team/docs/overview => "Drizzle is the only ORM with relational and SQL-like query APIs that gives you the best of both worlds when it comes to accessing your relational data. Drizzle is lightweight, performant, text-safe, lactose-free, gluten-free, sober, flexible and serverless-ready. Drizzle is not just a library, it's an experience."
 
     
     ```bash
