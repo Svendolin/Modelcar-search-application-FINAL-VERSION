@@ -5,7 +5,6 @@ import { timestamp } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core";
 import { doublePrecision } from "drizzle-orm/pg-core";
 
-// Check at 44:05
 // .notNull() is an info that the column is required
 // Now this will be out database structure:
 // So we are free to add more columns to this table:

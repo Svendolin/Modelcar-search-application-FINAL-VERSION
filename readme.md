@@ -5,7 +5,7 @@
 
 # ✔ - Full Stack Search Engine - ✔
 
-_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a full stack modelcar search engine application with react (next.js) using postgres full-text search and semantic quaring with Upstash Vector to use it on a separate subpage depending on the initial situation for my website: www.toycarsaddict.club. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
+_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a full stack modelcar search engine application with react (next.js) using postgres full-text search and semantic quaring with Upstash Vector with a product catalogue of several cars and various brands! You can also find access to the project on my developer page: www.svendolin-productions.ch**_
         
 | TYPE | LINK | 
 |:--------------| :--------------|
@@ -83,7 +83,6 @@ So I decided to build my own full stack search engine on a separate subpage.
 
 **Implementig the Technique of SEMANTIC SEARCH QUERYING Upstash Vector:**
 * Instant Matches from Database => Also from those which are similar in meaning but dont exactly match the search term
-* "Testen Sie unsere speziell entwickelte hybride Suchmaschine, die die Suchgenauigkeit erhöht, indem sie semantisch verwandte Ergebnisse abfragt"
 
 **Full Text Search Neon POSTGRES:**
 * Super powerful full text search capabilities of Postgres
@@ -94,39 +93,41 @@ So I decided to build my own full stack search engine on a separate subpage.
 * Keep logic in a way which does not require a reload of the page => Good for performance and later on for UX
   
 **Caching Search Results:**
-* Transition back to search page happens instantly > Caching all search results in the background for the best performance
+* Transition back to search page happens instantly => Caching all search results in the background for the best performance
 
 **Product Catalogue:**
 * Filled with an ImageID and descriptions
 * Can be easily updated and extended
 
 **Database:**
-* Product catalogue with content can be optimally managed using PostgresQL
+* Product catalogue with content can be optimally managed using PostgreSQL
 * Easy access to data, quick queries and simple administration in a safe environment
 ---
 Building Process: 🔧
 ---
 
-**1) Homepage - Create a basic page without too many details and design elements with following tools:**
+**1) Homepage - Time to create a basic page without too many details and design elements with following tools:**
 
-  1.1) **React.js** ist die ideale Wahl, um möglichst effizient eine nutzbare Benutzeroberfläche mittels Komponenten aufzubauen. Andere Javascript libraries wie Angular und Vue.js hatte ich bereits in der Vergangenheit verwendet, hatte mit React aber bisher am meisten zu tun. Angular wurde im Schulunterricht behandelt sowie für unser PARTUM MEDIA Projekt benutzt. Deshalb wollte ich etwas ähnliches nehmen.
+  1.1) **React.js** is the ideal choice for building a usable user interface as efficiently as possible using components. I had already used other Javascript libraries such as Angular and Vue.js in the past, but I had the most experience with React. Angular was covered in school lessons and used for our PARTUM MEDIA project. That's why I wanted to use something similar.
 
-  1.2) **Next.js** kommt hier als React Framework ins Spiel, was auf Node.js basiert und im Besitz von Vercel ist. Was ideal ist, wenn man das Projekt dann auch auf Vercel hosten bzw deployen möchte. Hierzu gibt es auch viel im Netz.
+  1.2) **Next.js** comes into play here as the React Framework, which is based on Node.js and is owned by Vercel. This is ideal if you also want to host or deploy the project on Vercel. There is also a lot on the net about this.
 
-  1.3) **ShadCN** ist eine UI Library für Next.js, die ich hier benutze, um beim Design etwas Standards einzubauen. Für den Bachelor of Science kann ich so den Fokus auf das technische legen und dadurch nicht übermässig Zeit in Erklärungen für das UI / UX Design verlieren.
+  1.3) **ShadCN** is a UI library for Next.js that I use here to incorporate some standards into the design. For the Bachelor of Science, I can focus on the technical aspects and not waste too much time explaining the UI / UX design.
 
-  1.4) **Tailwind** ist ein Utility-First-CSS-Framework, das seinen Nutzern Utility Klassen bereitstellt und einheitliche Vorganben mitbringt, wie sich das Design verhalten wird. So brauche ich hier nicht ewigs Zeit in das Styling von einzelnen CSS Elementen zu verbringen. Mit dem CSS Tailwind Intellisense Extension für Visual Studio Code kann ich die Utility Klassen direkt im Editor sehen und auswählen und habe trotzdem mein CSS.
+  1.4) **Tailwind** is a utility-first CSS framework, which provides its users with utility classes and standardized procedures for how the design will behave. So I don't need to spend ages styling individual CSS elements. With the CSS Tailwind Intellisense Extension for Visual Studio Code, I can see and select the utility classes directly in the editor and still have my CSS.
 
-  1.5) **Lucide.dev** ist eine Icon Library mit einer Vielzahl von SVG Icons, die ich hier benutze, um das Design etwas aufzupeppen. Die Elemente von ShadCN und Lucide sollten sich auch responsive auf das mobile Device verhalten.
+  1.5) **Lucide.dev** is an icon library with a variety of SVG icons that I use here to spice up the design. The elements from ShadCN and Lucide should also behave responsively on the mobile device.
 
 **2) Searchbar - Creating an intuitive searchbar which isnt that complicated:**
   * Intuitive searchbar with a search icon and a text field and accessible to use
-  * functional, for example hitting the search will put the state in the URL and the search results will be displayed (also for sharing the URL or reloading), it should keep all the progress
+  * Functional, for example hitting the search will put the state in the URL and the search results will be displayed (also for sharing the URL or reloading), it should keep all the progress
   * The entered text should not be lost despite pressing the Escape key
-  * It should be possible to start the search both by pressing the Enter key and by clicking on the search symbol.
-  * Loading states / Zustände: Wenn wir gerade dabei sind, unsere Datenbank im Vektorspeicher der semantischen Suche zu durchsuchen und abzufragen, dann wollen wir einen Ladezustand anzeigen. Während des Prozesses sollte der Benutzer wissen, dass die Suche noch läuft und er nichts mehr eintippen kann.
-  * Wir können ein Array von Abfragen (Array of queries) oder eine undefinierte Abfrage (undefined query) nicht verarbeiten, insbesondere wenn es sich nicht um eine Zeichenkette (string) handelt. Weiterleitung zur Stammseite. In search.tsx passiert die ganze Magie
-}
+  * It should be possible to start the search both by pressing the Enter key and by clicking on the search symbol
+  * Loading states: When we are in the process of searching and querying our database in the semantic search vector memory, we want to display a loading state. During the process, the user should know that the search is still running and that they can no longer type in anything
+  * We cannot process an array of queries or an undefined query, especially if it is not a string. Forwarding to the master page. Search.tsx is where all the magic happens
+
+
+
 
 **3) Database - Initializing / connecting the application to serverless and vectorized databases:**
 
@@ -137,19 +138,20 @@ Building Process: 🔧
     * If the search term corresponds 1:1 to a vehicle in the table (e.g. from the title), e.g. "Ferrari F40", then logically only the exact result is displayed
   * **3.2) Upstash Semantic Quering:**
     * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> Upstash takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
-    * Vectoren sind beispielsweise Javascript Arrays, eine statische Datenstruktur: In jedem Index wird ein Zahlenwert gespeichert, z.B [0.3,0.8,0.95]
-    * In Upstash definieren wir eine Dimension, bspw. 1536 => Somit haben wir 1536 Nummern in dieser Array, solange wird diese auch
-    * Diese nummerische representation der Bedeutung des Textes können wir mit OpenAI lösen 
-    * Somit ist "Ferari F40" und "Ferrari F40" trotz Schreibfehler semantically similar in meaning
+    * Vectors, for example, are Javascript arrays, a static data structure: a numerical value is stored in each index, e.g. [0.3,0.8,0.95]
+    * In Upstash we define a dimension, e.g. 1536 => So we have 1536 numbers in this array, as long as this is also stored in the array.
+    * We can solve this numerical representation of the meaning of the text with OpenAI 
+    * Thus “Ferari F40” and “Ferrari F40” are semantically similar in meaning despite spelling mistakes
   
+
+
 **4) Product Catalogue - Creating a product catalogue with a list of model cars + Product Preview**
 
-4.1) **Faker.js** bietet mir die Möglichkeit eine gewisse Anzahl and realistischen aber faken Daten in meine Tabelle aus vorest 26 (gemäss Alphabet) Einheiten einzubetten, mit falschen Preisen, falschen Inhalten etc. Die Inhalte werden aber trotzdem korrekt gelesen und entsprechend ihrer DNA in die Tabellen gefüllt.
+4.1) **Faker.js** offers me the possibility to embed a certain amount of realistic but fake data into my table of 26 (alphabetical) units, with wrong prices, wrong content etc.. However, the contents are still read correctly and filled into the tables according to their DNA.
 
-4.2) **Drizzle.orm** erlaubt mir, SQL-Abfragen direkt in meinem Code zu schreiben, ist hochsicher und unterstützt PostgreSQL. Es ist meine Brücke zwischen der objektorientierten Suchapplikation und der relationalen Datenbank von Neontech PostgreSQL. Mit dem Drizzle Kit Studio kann ich direkt Anpassungen vornehmen.
+4.2) **Drizzle.orm** allows me to write SQL queries directly in my code, is highly secure and supports PostgreSQL. It is my bridge between the object-oriented search application and the relational database of Neontech PostgreSQL. With the Drizzle Kit Studio I can make adjustments directly.
 
-4.3) **Public Folder** ist der Bereich, wo meine Modellautobilder abgelegt werden. Da ich beruflich viele Modelle fotografiere, werde ich diese professionell in passendem Grössenverhältnis gemäss Programmierung abspeichern und die Fotos selbst in einer gut ausgeleuchteten Fotobox schiessen.
-
+4.3) **Public Folder** is the area where my model car pictures are stored. As I photograph a lot of models for a living, I will save them professionally in a suitable size ratio according to the programming and shoot the photos myself in a well-lit photo box.
 
 <br />
 <br />
@@ -207,19 +209,22 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     - My Github Repo about node and more: https://github.com/Svendolin/All-about-AJAX-and-Node.js
 
     In a NUTSHELL: Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
-      - Da ich mit Daten im Frontend und Backend arbeiten möchte, ist Node.js die perfekte Lösung. Es ermöglicht mir, JavaScript im Backend auszuführen und somit Daten zu verarbeiten und zu speichern.
-      - Backend-Server nutzen JAVA, PHP, Python, Ruby, C# oder Node.js. Node.js ist für mich die gute Wahl, da ich  JavaScript bereits kenne und verwende Es ist auch eine gute Wahl für Anwendungen, die viele Eingaben und Ausgaben haben, da es asynchron ist.
-      - Für das Asynchrone Arbeiten ist Node.js perfekt. Es ist nicht blockierend und kann viele Anfragen gleichzeitig bearbeiten. Es ist auch sehr schnell, da es auf der V8-Engine von Google basiert. Hier kommt Ajax zum Einsatz, um Daten asynchron zu übertragen. Sprich:
-      - Einfügen und Laden von Inhalten us einer Datenbank/einem Server (z.B. localhost), ohne die Webseite jedes Mal zu aktualisieren, oder bspw. beim Klicken auf eine Schaltfläche, wie den Search-Button, ohne die Seite neu zu laden.
-      - Ein localhost bedeutet auf Deutsch „lokaler Host“ oder „lokaler Server“ und wird verwendet, um eine IP-Verbindung oder einen Anruf zu einem lokalen Computer herzustellen. Dieser wird hier in dieser React Umgebung auf Localhost:3000 ausgeführt.
+      - Since I want to work with data in the frontend and backend, Node.js is the perfect solution. It allows me to execute JavaScript in the backend and thus process and store data.
+      - Backend servers use JAVA, PHP, Python, Ruby, C# or Node.js. Node.js is the good choice for me as I already know and use JavaScript. It is also a good choice for applications that have a lot of input and output as it is asynchronous.
+      - For asynchronous work, Node.js is perfect. It is non-blocking and can handle many requests at the same time. It is also very fast as it is based on the V8 engine from Google. Ajax is used here to transfer data asynchronously. In other words:
+      - Inserting and loading content from a database/server (e.g. localhost) without refreshing the website each time, or, for example, when clicking on a button, such as the search button, without reloading the page.
+      - A localhost means “local host” or “local server” and is used to establish an IP connection or a call to a local computer. This is executed here in this React environment on Localhost:3000.
 
     <br>
 
 2. **NPM and JSON:**
     <hr>
 
-    In a NUTSHELL: Node.js bietet den Node Package Manager NPM, der es mir ermöglicht, Pakete zu installieren und zu verwalten. NPM ist auch ein Paketmanager für JavaScript, der mit Node.js installiert wird. Es besteht aus einer Befehlszeilenclient und einer Online-Datenbank von öffentlichen und kostenpflichtigen privaten Paketen, genannt dem NPM-Register. NPM ist der weltweit größte Software-Register. Es besteht aus mehr als 1.000.000 Paketen (Stand 2021).
-    Das können z.B auch eine Sammlung von CSS Klassen sein, ein Paket namens Matierial Design Zum Beispiel:
+    In a NUTSHELL: Node.js offers the Node Package Manager NPM, which allows me to install and manage packages. NPM is also a package manager for JavaScript that is installed with Node.js. It consists of a command line client and an online database of public and paid private packages, called the NPM registry. NPM is the world's largest software registry. It consists of more than 1,000,000 packages (as of 2021).
+    These can also be a collection of CSS classes, a package called Matierial Design for example:
+*** Translated with www.DeepL.com/Translator (free version) ***
+
+
 
     - All you need to know what NPM is https://www.w3schools.com/whatis/whatis_npm.asp
     - All about the format of JSON https://www.w3schools.com/whatis/whatis_json.asp
@@ -244,20 +249,20 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     ```bash
     npm run dev (<3 worked for me pretty well as well as CTRL + C to stop the server <3)
     ```
-    **[!] Important note: Always check the path: Rightclick on your folder in VSC > Open with integrated Terminal > Run the server from this path (because in my example I initialized .git outside the folder)**
+    **[!] Important note: Always check the path: Rightclick on your folder in VSC > Open with integrated Terminal > Run the server from this path (because in my example I initialized .git outside the folder first which was wrong actually. Be sure to initialize git IN the direct folder!)**
 
     <br>
 
-1. **NEXT.JS and SHADCN:**
+3. **NEXT.JS and SHADCN:**
    <hr>
 
-    In a NUTSHELL: Es ist ein React Framework und baut auf Node.js auf. Next.JS ist im Besitz von Vercel, diese Hosten auch die Projekte. Twitch, Tiktok, Ferrari etc sind typische Next.JS Nutzer. Das Hosten über Vercel geht ganz einfach, indem man sich bei Vercel anmeldet und mit Github verknüpft, sodass das Projekt hochgeladen werden kann.
+    In a NUTSHELL: It is a React framework and is based on Node.js. Next.JS is owned by Vercel, they also host the projects. Twitch, Tiktok, Ferrari etc. are typical Next.JS users. Hosting via Vercel is as simple as logging in to Vercel and linking to Github so that the project can be uploaded.
     - Next.js Info: https://kinsta.com/de/wissensdatenbank/next-js
   
-    
+    -   Next.js is the ideal choice for demonstrating an MVP (Minumum Viable Product) to people for testing purposes on December 28. In the end, it will be a more complex and sophisticated web application, called “Full Stack Search Application”.
+    - In addition, Next.JS offers built-in CSS support, which makes my work easier. So I have (theoretically) already created a good basic frontend design in less time and don't waste time on styling or UI/UX design.
 
-    -   Next.js ist die ideale Wahl, ein MVP (Minumum Viable Product) für den 28. Dezember als Testzweck den Leuten vorzuführen. Am Ende soll es ja eine komplexere und anspruchsvollere Webanwendung werden, genannt "Full Stack Search Application".
-    -   Ausserdem bietet Next.JS built-in CSS Support, was mir die Arbeit erleichtert. Somit habe ich bereits in kurzer Zeit ein gutes Basis-Frontend Design erstellt und verliere keine Zeit mit dem Styling oder dem UI/UX Design.
+
   
     3.1   Make things look good with ShadCN (UI library for Next.js, a DEFAULT DESIGN for my project):
 
@@ -270,7 +275,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     # It then creates a file called "components.json" where this configuration will be added
     ```
 
-    3.2   Beautiful looking Search Bar out of the box with full accessability:
+    3.2   STYLING the Search Bar out of the box with full accessability via ShadCN:
 
     - More infos: https://ui.shadcn.com/docs
 
@@ -285,18 +290,19 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
 4. **TAILWIND:**
     <hr>
-    In a NUTSHELL: Tailwind ist ein Utility-First-CSS-Framework, das seinen Nutzern Utility Klassen bereitstellt. Durch die Verwendung dieser Klassen lassen sich schnell und einfach eigene, einzigartige Designs erstellen. Für die Gestaltung von Webseiten enthält Tailwind die Grundlagen, wie z.B. Farben, Größen, Ränder, Positionierungen usw. Komponenten (engl components) müssen von Nutzern selbst erstellt werden. Damit unterscheidet es sich von anderen CSS Frameworks wie z.B. Bootstrap und Bulma, die vorgefertigte UI Komponenten anbieten. Komponenten lassen sich in Tailwind inline stylen, weshalb es nicht mehr nötig ist, eine separate CSS Datei anzulegen.
+    In a NUTSHELL: Tailwind is a utility-first CSS framework that provides its users with utility classes. By using these classes, you can quickly and easily create your own unique designs. Tailwind contains the basics for designing websites, such as colors, sizes, margins, positioning, etc. Components must be created by users themselves, so do I. This distinguishes it from other CSS frameworks such as Bootstrap and Bulma, which offer ready-made UI components. Components can be styled inline in Tailwind, which is why it is no longer necessary to create a separate CSS file!
 
     - More about React and Tailwind on another repo from me: https://github.com/Svendolin/All-about-React
 
-    [+] Es gibt eine Standardkonfiguration, die sich einfach mit einer tailwind.config.js Datei überschreiben lässt. = Perfekt anpassbar.
+    [+] There is a default configuration that can be easily overwritten with a tailwind.config.js file. = Perfectly customizable.
 
-    [+] Durch die von Tailwind bereitgestellten Hilfsklassen spart man sich das Benennen von Klassen, was die Arbeit erleichtert
+    [+] The auxiliary classes provided by Tailwind save you having to name classes, which makes your work easier
 
-    [+] Mit der IntelliSense Tailwind CSS Extension für Visual Studio Code können Nutzer die Utility Klassen direkt im Editor sehen und auswählen, somit sehe ich beim Hovern die originalen CSS Klassennamen.
+    [+] With the IntelliSense Tailwind CSS Extension for Visual Studio Code, users can see and select the utility classes directly in the editor, so I can see the original CSS class names when hovering.
 
-    [+] Tailwind CSS ist ein Open-Source-Projekt und kann kostenlos genutzt werden.
+    [+] Tailwind CSS is an open source project and can be used free of charge.
 
+    <br />
 
 5. **LUCIDE.REACT:**
     <hr>
@@ -306,46 +312,52 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     ```bash
     npm install lucide-react
     ```
+    <br />
 
-  6. **NEON.TECH PostgreSQL Database + Fulltext Search:**
+  16. **NEON.TECH PostgreSQL Database + Fulltext Search:**
       <hr>
-      In a NUTSHELL: neon.tech ist eine moderne serverless PostgresQL Plattform, die es ermöglicht, Datenbanken schnell und einfach zu erstellen und zu verwalten. Dabei können Datenbanken und Branches bei verschiedenen Cloudanbietern und Regionen gestartet werden. Entsprechend dem “serverless” Ansatz stoppt jeder Branch automatisch wieder, wenn der Traffic aufhört. Neon is a serverless, scalable implementation of PostgreSQL that you can run on-premise or try through its managed service.
+      In a NUTSHELL: neon.tech is a modern serverless PostgresQL platform that enables databases to be created and managed quickly and easily. Databases and branches can be started at different cloud providers and regions. In line with the serverless approach, each branch stops automatically when the traffic stops. Neon is a serverless, scalable implementation of PostgreSQL that you can run on-premise or try through its managed service.
 
       Why not MYSQL or MongoDB as I usuallly did?
 
-      [+] Branching: Freies Experimentieren ohne Auswirkungen auf den Hauptzweig main
+      [+] Branching: Free experimentation without effects on the main branch main
 
-      [+] Sofortiges Sichern der Datenbank. Wenn Daten versehentlich verloren gehen, können wir auf den letzten guten Zweig umschalten.
+      [+] Immediate backup of the database. If data is accidentally lost, we can switch to the last good branch.
 
-      [+] Vereinfachte Integrationstests. Entwickler können Tests in testspezifischen Zweigen ausführen.
+      [+] Simplified integration tests. Developers can run tests in test-specific branches.
 
-      [+] Sichere Erprobung automatisierter Datenbankmigrationen in der Produktion.
+      [+] Safe testing of automated database migrations in production.
 
-      [+] Isolierte Ausführung von Analyse- oder maschinellen Lernprozessen.
+      [+] Isolated execution of analysis or machine learning processes.
+
+      [+] Connection capability with Drizzle-Kit-Studio to manage everything under the hood!
       
-      [!] Mit herkömmlichen Datenbank-Engines ist das alles nicht möglich. Zumindest nicht ohne weiteres. Einige Datenbank-Engines wie SQL Server verfügen über Snapshots, mit denen tatsächlich sofortige Kopien einer Datenbank erstellt werden können. Aber Snapshots sind schreibgeschützt, und das schränkt ihren Nutzen ein. Bei den meisten Datenbank-Engines müssen wir auf kompliziertere Mechanismen wie Sicherung und Wiederherstellung oder Replikation zurückgreifen.
+      [!] None of this is possible with conventional database engines. At least not without further ado. Some database engines like SQL Server have snapshots that can actually create instant copies of a database. But snapshots are read-only, and that limits their usefulness. With most database engines, we have to resort to more complicated mechanisms such as backup and restore or replication.
 
       - More infos: https://neon.tech/home
       - Pricing will be set at Free Plan due to testing purposes which can be seen [HERE](https://neon.tech/pricing?gad_source=1&gclid=CjwKCAiA3Na5BhAZEiwAzrfagKK2py-GVkUn5fylQB12C9z8k8pYm5T3wYNkvtC1CynzJZUeS2XfNxoCA0oQAvD_BwE)
 
-
-     - Neon automatically scales my project's compute resources up or down to meet demand. The recommended settings for my free plan are currently selected at 2vCPU and 8GB RAM max.
+      - Neon automatically scales my project's compute resources up or down to meet demand. The recommended settings for my free plan are currently selected at 2vCPU and 8GB RAM max.
   
       - Don't forget to copy the unique database URL from the Neon.tech dashboard and paste it into the .env file (as a connection string) which wont be uploaded to Github for security reasons.
 
-      6.1   Install the NEON Serverless Driver:
-
+    6.1   Install the NEON Serverless Driver:
+   
        - More infos: https://neon.tech/docs/serverless/serverless-driver
 
-       - Connect to Neon from serverless environments over HTTP. The Neon serverless driver uses the neon function for queries over HTTP:
-      ```bash
+      - Connect to Neon from serverless environments over HTTP. The Neon serverless driver uses the neon function for queries over HTTP:
+     ```bash
       npm install @neondatabase/serverless
-      # Installs the fully accessibly input component
-      ```
+       # Installs the fully accessibly input component
+          ```
 
-6. **DRIZZLE.ORM**
+7. **DRIZZLE.ORM**
     <hr>
-    In a NUTSHELL: Drizzle ORM ist ein TypeScript-basiertes Daten-Framework. ORMs wie Drizzle helfen bei der Verbindung mit einem Datenbankserver und der Ausführung von Abfragen und Operationen über objektbasierte APIs. In einem JavaScript/TypeScript ORM wird jede Art von Datenbankentität durch einen JS/TS-Prototyp dargestellt. Für jeden Prototyp werden Tabellen erzeugt, Spalten werden durch Felder und Attribute dargestellt, während Zeilen für jede Instanz des Prototyps erstellt werden.
+    In a NUTSHELL: Drizzle ORM is a TypeScript-based data framework. ORMs like Drizzle help to connect to a database server and execute queries and operations via object-based APIs. In a JavaScript/TypeScript ORM, each type of database entity is represented by a JS/TS prototype. Tables are created for each prototype, columns are represented by fields and attributes, while rows are created for each instance of the prototype.
+
+
+
+  
 
     - Drizzle's official website and docs: https://orm.drizzle.team/docs/overview => "Drizzle is the only ORM with relational and SQL-like query APIs that gives you the best of both worlds when it comes to accessing your relational data. Drizzle is lightweight, performant, text-safe, lactose-free, gluten-free, sober, flexible and serverless-ready. Drizzle is not just a library, it's an experience."
 
