@@ -222,7 +222,6 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
     In a NUTSHELL: Node.js offers the Node Package Manager NPM, which allows me to install and manage packages. NPM is also a package manager for JavaScript that is installed with Node.js. It consists of a command line client and an online database of public and paid private packages, called the NPM registry. NPM is the world's largest software registry. It consists of more than 1,000,000 packages (as of 2021).
     These can also be a collection of CSS classes, a package called Matierial Design for example:
-*** Translated with www.DeepL.com/Translator (free version) ***
 
 
 
@@ -314,7 +313,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     ```
     <br />
 
-  16. **NEON.TECH PostgreSQL Database + Fulltext Search:**
+6. **NEON.TECH PostgreSQL Database + Fulltext Search:**
       <hr>
       In a NUTSHELL: neon.tech is a modern serverless PostgresQL platform that enables databases to be created and managed quickly and easily. Databases and branches can be started at different cloud providers and regions. In line with the serverless approach, each branch stops automatically when the traffic stops. Neon is a serverless, scalable implementation of PostgreSQL that you can run on-premise or try through its managed service.
 
