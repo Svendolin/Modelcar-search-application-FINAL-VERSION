@@ -19,14 +19,14 @@ async function main() {
 
   const productImageIDs = [
     {
-      imageId: 'dark_down_jacket_1.png',
+      imageId: 'Ferrari F430 Scuderia 2007 Hot Wheels.jpg',
       description:
-        'A sleeky, insulated down jacket designed for chilly urban adventures. Its slim fit and dark hue make it a versatile addition to any winter wardrobe.',
+        'The Ferrari F430 Scuderia model has been produced between 2009 and 2014. Hot Wheels has released many versions of it including this one which is out of a 5-Pack Set from 2011.',
     },
     {
-      imageId: 'dark_down_jacket_2.png',
+      imageId: 'Ferrari F50 1995 Hot Wheels.jpg',
       description:
-        'Thisss durable down jacket offers exceptional warmth with a touch of elegance. Perfect for those who demand both style and functionality in cold weather.',
+        'The Ferrari F50 Challenge model has been produced between 1999 and 2013. Hot Wheels has released many versions of it including this one which is a Speed Machines model from 2011.',
     },
     {
       imageId: 'dark_fleece_jacket_1.png',

@@ -61,7 +61,7 @@ export default function RootLayout({
               <Icons.Sparkles className="h-16 w-16" />
 
               
-              <h1 className="tracking-tight text-4xl sm:text-6xl font-bold">FindYourModelcar 2.0</h1>
+              <h1 className="tracking-tight text-4xl sm:text-6xl font-bold">FindYourModelcar</h1>
               <h2 className="tracking-tight text-1xl sm:text-2xl font-bold">Does your car exist as a 1:64-scaled Hot Wheels model?</h2>
             <p className="max-w-xl text-center test-1xl text-slate-700">
               Test our specially developped modelcar hybrid search engine that enhances search accuracy by 
