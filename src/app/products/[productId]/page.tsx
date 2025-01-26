@@ -58,7 +58,7 @@ const Page = async ({ params }: PageProps) => {
           </h1>
         </div>
 
-        <div className='aspect-square my-6 border border-border w-52 h-52'>
+        <div className='aspect-square my-6 border border-border w-58 h-58'> 
           <div className='relative bg-zinc-100 w-full h-full overflow-hidden rounded-xl'>
             <Image
               fill
@@ -72,9 +72,22 @@ const Page = async ({ params }: PageProps) => {
 
         <div className='mt-4'>
           <div className='flex items-center'>
-            <p className='font-medium text-gray-900'>
-              ${product.price.toFixed(2)}
+            <p className='font-bold text-gray-900'>
+              Approximate value: ${product.price.toFixed(2)}
             </p>
+            <p className='ml-2 text-sm text-muted-foreground'>
+            (Price corresponds to original packaging)
+            </p>
+          </div>
+
+          <div className='flex items-center'>
+            <p className='font-bold text-gray-900'>
+              Release date: {product.age}
+            </p>
+            <p className='ml-2 text-sm text-muted-foreground'>
+            (of the model as shown above)
+            </p>
+            
           </div>
 
           <div className='mt-4 space-y-6'>
@@ -86,20 +99,22 @@ const Page = async ({ params }: PageProps) => {
           <div className='mt-6 flex items-center'>
             <Check className='h-5 w-5 flex-shrink-0 text-green-500' />
             <p className='ml-2 text-sm text-muted-foreground'>
-              Eligible for express delivery
+              Fully licensed product
             </p>
           </div>
         </div>
       </div>
 
       <div className='mt-6'>
-        <Button className='w-full mt-10'>Add to cart</Button>
+      <a href="mailto:support@toycarsaddict.club">
+        <Button className='w-full mt-10'>CONTACT US</Button>
+      </a>
 
         <div className='mt-6 text-center'>
           <div className='inline-flex text-sm text-medium'>
             <Shield className='mr-2 h-5 w-5 flex-shrink-0 text-gray-400' />
             <span className='text-muted-foreground hover:text-gray-700'>
-              30 Day Return Guarantee
+            Part of the collection of Toycarsaddict_Daily
             </span>
           </div>
         </div>

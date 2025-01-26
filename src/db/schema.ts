@@ -12,9 +12,9 @@ export const productsTable = pgTable("products", {
   id: text("id").primaryKey().default("uuid_generate_v4()"), // When we create a new product, it will automatically get an ID
   name: text("name").notNull(),
   imageId: text("image_id").notNull(),
-  price: doublePrecision("price").notNull(),
-  description: text("description"),
-  age: integer("age").notNull(),
+  price: doublePrecision("price").notNull(), // VALUE of the car
+  description: text("description"), // DESCRIPTION of the car
+  age: integer("age").notNull(), // RELEASE YEAR of the car
   createdAt: timestamp("createdAt").defaultNow(),
   updatedAt: timestamp("updatedAt").defaultNow(),
 })
