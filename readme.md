@@ -3,9 +3,9 @@
 
 ***
 
-# ✔ - Full Stack Search Engine - ✔
+# ✔ - Modelcar Search Application  - ✔
 
-_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a full stack modelcar search engine application with react (next.js) using postgres full-text search and semantic quaring with Upstash Vector with a product catalogue of several cars and various brands! You can also find access to the project on my developer page: www.svendolin-productions.ch**_
+_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a frontend AND backend based modelcar search application with a react framework called next.js using postgres full-text search and semantic quaring with a vector database and last but not least a real product catalogue with several cars to feed it with data. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
         
 | TYPE | LINK | 
 |:--------------| :--------------|
@@ -81,12 +81,14 @@ So I decided to build my own full stack search engine on a separate subpage.
 **Loading States:**
 * Smooth loading states while we are waiting for the search results = With Next.js very enjoyable => In Miliseconds getting a list from backend 
 
-**Implementig the Technique of SEMANTIC SEARCH QUERYING Upstash Vector:**
+**Implementig the Technique of semantic searching with vector based search results:**
 * Instant Matches from Database => Also from those which are similar in meaning but dont exactly match the search term
+* If we get the model year of the car with a ()-bracket, the result was generated via the full text search
 
-**Full Text Search Neon POSTGRES:**
-* Super powerful full text search capabilities of Postgres
+**Full Text Search using a regular serverless relational database:**
+* Super powerful full text search capabilities of PostgreSQL needed for the best performance
 * When it matches the search term directly, it will be displayed first on the top as the most relevant result
+* If we get the model year of the car with a []-bracket, the result was generated via semantic search
 
 **Advanced  Next.js routing patterns:**
 * URL switches but the core layout stays the same (Car with all the informations and stuff)
@@ -131,15 +133,16 @@ Building Process: 🔧
 
 **3) Database - Initializing / connecting the application to serverless and vectorized databases:**
 
-  * **3.1) Postgres Full Text Search:**
+  * **3.1) PostgreSQL Full Text Search:**
     * Perfect way to implementing quering logic, we filter the products for the search query
     * We query for Ferrari: In PostgreSQL we do a complete full-text search based on the title name and the description **=> Getting the most relevant results by literally matching the search query!**
     * If the title AND description contain the term Ferrari, we must display the most relevant product at the top
     * If the search term corresponds 1:1 to a vehicle in the table (e.g. from the title), e.g. "Ferrari F40", then logically only the exact result is displayed
-  * **3.2) Upstash Semantic Quering:**
-    * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> Upstash takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
+
+  * **3.2) Semantic Quering:**
+    * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> A vector database takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
     * Vectors, for example, are Javascript arrays, a static data structure: a numerical value is stored in each index, e.g. [0.3,0.8,0.95]
-    * In Upstash we define a dimension, e.g. 1536 => So we have 1536 numbers in this array, as long as this is also stored in the array.
+    * We define a dimension, e.g. 1536 => So we have 1536 numbers in this array, as long as this is also stored in the array.
     * We can solve this numerical representation of the meaning of the text with OpenAI 
     * Thus “Ferari F40” and “Ferrari F40” are semantically similar in meaning despite spelling mistakes
   
@@ -196,7 +199,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
 <img align="left" alt="JavaScript" width="35px" src="https://github.com/vercel.png?size=40" />
 
-## &nbsp;Node.JS / NPM / JSON / Next.JS - My STEP TO STEP personal USE CASE:  
+## &nbsp;Node.JS / NPM / JSON / Next.JS USE CASE - The most important steps to success:  
 ***
 
 
@@ -388,14 +391,14 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
   <br />
 
-9. **UPSTASH VECTOR / TSX:**
+9. **VECTOR / TSX:**
     <hr>
-    In a NUTSHELL: Upstash Vector is a serverless vector database designed for working with vector embeddings. In the domain of databases, a vector database is essential for managing numeric representations of objects (images, sounds, text, etc.) in a multi-dimensional space. These databases are focused on efficiently handling vectors for storage, retrieval, and, most importantly, querying based on similarity. 
+    In a NUTSHELL: A serverless vector database designed for working with vector embeddings. In the domain of databases, a vector database is essential for managing numeric representations of objects (images, sounds, text, etc.) in a multi-dimensional space. These databases are focused on efficiently handling vectors for storage, retrieval, and, most importantly, querying based on similarity. 
     
-    With other words: **I will implement a semantic search querying with Upstash Vector to increase the search accuracy by querying semantically related results.** More about that: https://upstash.com/docs/vector/overall/whatisvector
+    With other words: **I will implement a semantic search querying to increase the search accuracy by querying semantically related results.** More about that: https://upstash.com/docs/vector/overall/whatisvector
 
 
-    9.1   Upstash Vector:
+    9.1  Installment of a vexctor database:
 
      - Simply install it with npm in your terminal:
   
@@ -435,7 +438,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
    - **=> IMPORTANT:** Now we can host the database content here https://local.drizzle.studio/ or directly in the Neon.tech PostgreSQL dashboard which is connected with each other: https://console.neon.tech/app/projects/dry-heart-80939055/branches/br-withered-fog-a240j34l/tables?database=searchapplication
 
-    9.4   Creating an account on Upstash Vector:
+    9.4   Creating an account:
 
      - We define a few things such as dimension count* (1536) and Similarity Function* (cosine) and then we can create a new database.
      - The token we get can be connected and pasted into the .env file for security reasons.
@@ -445,7 +448,7 @@ The search parameters are an Object, each of these has a dynamic key which is a 
       # https://console.upstash.com/vector/472ec71e-d8f0-4281-bc1c-9dae9212e1bd?teamid=0
     ```
 
-    - **=> IMPORTANT: Wie werden die zueinander upgedated? PostgreSQL und Upstash?**
+    <br />
 
 10. **OpenAI - OpenAI TypeScript and JavaScript API Library**
     <hr>
@@ -465,6 +468,8 @@ The search parameters are an Object, each of these has a dynamic key which is a 
      - Searching for "API keys" and copy the secret key to the .env file
 
     <br />
+
+    Releasing!!!
 
     <br />
     <br />
