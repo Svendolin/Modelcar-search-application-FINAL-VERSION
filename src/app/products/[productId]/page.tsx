@@ -8,9 +8,7 @@ import { Check, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface PageProps {
-  params: {
-    productId: string
-  }
+  params: { productId: string };
 }
 
 const Page = async ({ params }: PageProps) => {
