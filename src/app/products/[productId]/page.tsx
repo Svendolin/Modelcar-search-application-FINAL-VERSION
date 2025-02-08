@@ -12,30 +12,27 @@ interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { productId } = params
-
-  // If the product id is not present in the url, we are returning a 404 page.
-  if (!productId) return notFound()
+  if (!params.productId) return notFound();
 
   const [product] = await db
     .select()
     .from(productsTable)
-    .where(eq(productsTable.id, productId))
+    .where(eq(productsTable.id, params.productId));
 
-  if (!product) return notFound()
+  if (!product) return notFound();
 
   return (
     <div className='py-8 pb-8 px-12 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md'>
       <div>
-        <BackButton /> 
+        <BackButton />
 
-        <div className='mt-4'> 
+        <div className='mt-4'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
             {product.name}
           </h1>
         </div>
 
-        <div className='aspect-square my-6 border border-border w-58 h-58'> 
+        <div className='aspect-square my-6 border border-border w-58 h-58'>
           <div className='relative bg-zinc-100 w-full h-full overflow-hidden rounded-xl'>
             <Image
               fill
@@ -53,7 +50,7 @@ const Page = async ({ params }: PageProps) => {
               Approximate value: ${product.price.toFixed(2)}
             </p>
             <p className='ml-2 text-sm text-muted-foreground'>
-            (Price corresponds to original packaging)
+              (Price corresponds to original packaging)
             </p>
           </div>
 
@@ -62,7 +59,7 @@ const Page = async ({ params }: PageProps) => {
               Release date: {product.age}
             </p>
             <p className='ml-2 text-sm text-muted-foreground'>
-            (of the model as shown above)
+              (of the model as shown above)
             </p>
           </div>
 
@@ -96,7 +93,7 @@ const Page = async ({ params }: PageProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
