@@ -164,5 +164,12 @@ export const Icons = {
       />
     </svg>
   ),
+  Logo: (props: LucideProps) => (
+    <svg {...props} viewBox='0 0 24 24'>
+      {/* Your custom SVG content */}
+      <path d="M12 0L15.09 7.26L23 8.27L17 13.97L18.18 21.72L12 18L5.82 21.72L7 13.97L1 8.27L8.91 7.26L12 0Z" />
+    </svg>
+  ),
+  
 
 };

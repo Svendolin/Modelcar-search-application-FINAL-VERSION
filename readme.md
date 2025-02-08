@@ -469,10 +469,28 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
     <br />
 
-    Releasing!!!
+  
+  11. **Vercel - Publishing projects with Vercel** <hr>
 
-    <br />
-    <br />
+      In a NUTSHELL: Vercel is known for its outstanding deployment and hosting of web applications. With a strong focus on speed and ease of use, Vercel enables developers to publish and manage their projects effortlessly. As with the other applications, a GitHub account is required. More about that here: https://vercel.com/docs
+
+      **Environment variables** 
+      => As we are not uploading our .env file to GitHub, we need to set up the environment variables in Vercel. To do this, we go to the Vercel website and select our project. Then we go to the settings and click on ‘Environment Variables’. Here we can add the variables that we have in our .env file. This includes the API keys for the database and OpenAI.
+
+        - Simply install it with npm in your terminal:
+        ```bash
+         npm install openai
+        ```
+
+      10.1  Getting used to the OpenAI developer Platform:
+
+      - We need our API key to connect to the OpenAI API. We can find it in the dashboard: https://platform.openai.com/docs/overview
+       - Searching for "API keys" and copy the secret key to the .env file
+
+      <br />
+
+      <br />
+      <br />
 
 ***
 ## Extensions on VISUAL STUDIO CODE: ✅
@@ -525,5 +543,5 @@ Check out our ISSUES SECTION for more information: [HERE](https://github.com/Sve
 
 | Questions / Issues | Anwers | Solutions |
 |:--------------|:-------------:|--------------:|
-| 3 | 3 | 3 |
+| 5 | 5 | 5 |
 
