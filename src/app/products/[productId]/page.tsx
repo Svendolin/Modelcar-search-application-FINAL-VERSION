@@ -1,7 +1,3 @@
-// Over here we are fetching the product details from the database and displaying it on the page.
-// We are using the product id from the url to fetch the product details from the database.
-// => This is the place where we display the product details like name, price, description, image, etc.
-
 import { db } from '@/db'
 import { productsTable } from '@/db/schema'
 import { notFound } from 'next/navigation'
@@ -29,27 +25,10 @@ const Page = async ({ params }: PageProps) => {
     .where(eq(productsTable.id, productId))
 
   if (!product) return notFound()
-  // BackButton is a custom component that we have created to navigate back to the previous page.
-  /* Up next the followning lines will be:
 
-  - BackButton Component to get back to the 3  models overview
-  - Product name (Title)
-  - Product image
-  - Product price (toFixed(2) means that the price will be displayed with 2 decimal places)
-  - Product description
-  - A message that says that the product is eligible for express delivery
-  - A button to add the product to the cart
-  - A message that says that the product is eligible for a 30-day return guarantee
-
-  (Many of the icons are from Lucide, a library of icons that we are using in this project)
-  
-  
-  */
   return (
     <div className='py-8 pb-8 px-12 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md'>
       <div>
-        
-        
         <BackButton /> 
 
         <div className='mt-4'> 
@@ -87,7 +66,6 @@ const Page = async ({ params }: PageProps) => {
             <p className='ml-2 text-sm text-muted-foreground'>
             (of the model as shown above)
             </p>
-            
           </div>
 
           <div className='mt-4 space-y-6'>
@@ -106,15 +84,15 @@ const Page = async ({ params }: PageProps) => {
       </div>
 
       <div className='mt-6'>
-      <a href="mailto:support@toycarsaddict.club">
-        <Button className='w-full mt-10'>CONTACT US</Button>
-      </a>
+        <a href="mailto:support@toycarsaddict.club">
+          <Button className='w-full mt-10'>CONTACT US</Button>
+        </a>
 
         <div className='mt-6 text-center'>
           <div className='inline-flex text-sm text-medium'>
             <Shield className='mr-2 h-5 w-5 flex-shrink-0 text-gray-400' />
             <span className='text-muted-foreground hover:text-gray-700'>
-            Part of the collection of Toycarsaddict_Daily
+              Part of the collection of Toycarsaddict_Daily
             </span>
           </div>
         </div>
