@@ -3,9 +3,9 @@
 
 ***
 
-# ✔ - Modelcar Search Application  - ✔
+# ✔ - Modelcar Search-Application  - ✔
 
-_**In this webproject as part of the SAE Bachelor program 6GST0XD10x I'm building a frontend AND backend based modelcar search application with a react framework called next.js using postgres full-text search and semantic quaring with a vector database and last but not least a real product catalogue with several cars to feed it with data. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
+_**In this webproject as a key goal of the SAE Bachelor program 6GST0XD10x I was building a frontend AND backend based modelcar search application with a react framework called next.js using postgres full-text search and semantic quaring with a vector database and last but not least an EXEL-product catalogue with several cars to feed it with data. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
         
 | TYPE | LINK | 
 |:--------------| :--------------|
