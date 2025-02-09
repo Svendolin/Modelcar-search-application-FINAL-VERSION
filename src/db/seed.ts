@@ -402,7 +402,7 @@ async function main() {
       name: "Ferrari California (2008)",
       price: 39.9,
       age: 2010,
-      description: "The Ferrari 599 GTB Fiorano model has been produced between 2009 and 2012. Hot Wheels has released many versions of this italian car including this one out of the Speed Machine series from 2010."
+      description: "The Ferrari California model has been produced between 2009 and 2012. Hot Wheels has released many versions of this italian car including this one out of the Speed Machine series from 2010."
     },
     {
       id: "48",

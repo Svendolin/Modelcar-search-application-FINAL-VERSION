@@ -11,9 +11,14 @@ import Image from 'next/image'
 import { Check, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+interface PageProps {
+  params: {
+    productId: string
+  }
+}
 
-const Page = async ({ params }: { params: { productId: string } }) => {
-  const { productId } = params
+const Page = async ({ params }: PageProps) => {
+  const { productId } = params as { productId: string };
 
   // If the product id is not present in the url, we are returning a 404 page.
   if (!productId) return notFound()
