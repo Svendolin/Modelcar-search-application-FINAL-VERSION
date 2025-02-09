@@ -12,13 +12,13 @@ import { Check, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     productId: string
-  }
+  }>
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { productId } = params;
+  const { productId } = await params;
 
   // If the product id is not present in the url, we are returning a 404 page.
   if (!productId) return notFound()
@@ -30,7 +30,7 @@ const Page = async ({ params }: PageProps) => {
 
   if (!product) return notFound()
   // BackButton is a custom component that we have created to navigate back to the previous page.
-  /* Up next the followning lines will be:
+  /* Up next the following lines will be:
 
   - BackButton Component to get back to the 3  models overview
   - Product name (Title)
