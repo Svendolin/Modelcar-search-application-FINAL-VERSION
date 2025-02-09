@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { productId } = params as { productId: string };
+  const { productId } = params;
 
   // If the product id is not present in the url, we are returning a 404 page.
   if (!productId) return notFound()
