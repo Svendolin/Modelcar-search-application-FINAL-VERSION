@@ -1,3 +1,4 @@
+
 import { db } from "@/db";
 import { Product, productsTable } from "@/db/schema";
 import { sql } from "drizzle-orm";
@@ -10,9 +11,9 @@ import Image from 'next/image';
 // The Search folder will end up in the URL path /search
 // Page.tsx will be the content shown under the queried URL
 interface PageProps {
-  searchParams: Promise<{
-    [key: string]: string | string[] | undefined
-  }>
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  }
 }
 
 // The overlap of what we store in the Vector database and the main database from db > schema.ts
@@ -20,8 +21,7 @@ export type CoreProduct = Omit<Product, "createdAt" | "updatedAt">;
 const index = new Index<CoreProduct>()
 
 const Page = async ({searchParams}: PageProps) => {
-  const params = await searchParams;
-  const query = params.query; // query is the key in the searchParams object which will be either a type string or an array of strings or undefined.
+  const query = searchParams.query; // query is the key in the searchParams object which will be either a type string or an array of strings or undefined.
   
   if (Array.isArray(query) || !query) { // !query = is true if query is undefined
     return redirect('/') // We can not process an array of queries or an undefined query especially if its not a string. Redirect to the root page.
