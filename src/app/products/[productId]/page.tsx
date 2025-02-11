@@ -12,13 +12,15 @@ import { Check, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface PageProps {
-  params: Promise<{
+  params: {
     productId: string
-  }>
+  }
+  // Falls du searchParams benötigst:
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { productId } = await params;
+  const { productId } = params;
 
   // If the product id is not present in the url, we are returning a 404 page.
   if (!productId) return notFound()
@@ -48,17 +50,17 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div className='py-8 pb-8 px-12 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md'>
       <div>
-        
-        
-        <BackButton /> 
 
-        <div className='mt-4'> 
+
+        <BackButton />
+
+        <div className='mt-4'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
             {product.name}
           </h1>
         </div>
 
-        <div className='aspect-square my-6 border border-border w-58 h-58'> 
+        <div className='aspect-square my-6 border border-border w-58 h-58'>
           <div className='relative bg-zinc-100 w-full h-full overflow-hidden rounded-xl'>
             <Image
               fill
@@ -76,7 +78,7 @@ const Page = async ({ params }: PageProps) => {
               Approximate value: ${product.price.toFixed(2)}
             </p>
             <p className='ml-2 text-sm text-muted-foreground'>
-            (Price corresponds to original packaging)
+              (Price corresponds to original packaging)
             </p>
           </div>
 
@@ -85,9 +87,9 @@ const Page = async ({ params }: PageProps) => {
               Release date: {product.age}
             </p>
             <p className='ml-2 text-sm text-muted-foreground'>
-            (of the model as shown above)
+              (of the model as shown above)
             </p>
-            
+
           </div>
 
           <div className='mt-4 space-y-6'>
@@ -106,15 +108,15 @@ const Page = async ({ params }: PageProps) => {
       </div>
 
       <div className='mt-6'>
-      <a href="mailto:support@toycarsaddict.club">
-        <Button className='w-full mt-10'>CONTACT US</Button>
-      </a>
+        <a href="mailto:support@toycarsaddict.club">
+          <Button className='w-full mt-10'>CONTACT US</Button>
+        </a>
 
         <div className='mt-6 text-center'>
           <div className='inline-flex text-sm text-medium'>
             <Shield className='mr-2 h-5 w-5 flex-shrink-0 text-gray-400' />
             <span className='text-muted-foreground hover:text-gray-700'>
-            Part of the collection of Toycarsaddict_Daily
+              Part of the collection of Toycarsaddict_Daily
             </span>
           </div>
         </div>
