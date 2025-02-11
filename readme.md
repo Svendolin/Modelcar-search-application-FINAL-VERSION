@@ -5,12 +5,13 @@
 
 # ✔ - Modelcar Search-Application  - ✔
 
-_**In this webproject as a key goal of the SAE Bachelor program 6GST0XD10x I was building a frontend AND backend based modelcar search application with a react framework called next.js using postgres full-text search and semantic quaring with a vector database and last but not least an EXEL-product catalogue with several cars to feed it with data. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
+_**In this webproject as a key goal of the SAE Bachelor program 6GST0XD10x I was building a frontend AND backend based modelcar search application with a react framework called next.js using postgres full-text search and semantic quaring with a vector database and last but not least an EXEL-product catalogue with several cars to feed our database with relevant informations to search for. You can also find access to the project on my developer page: www.svendolin-productions.ch**_
         
 | TYPE | LINK | 
 |:--------------| :--------------|
+| Check out the official video about this project on YOUTUBE:| [WATCH NOW ](https://youtu.be/7G4d7OVc9Ko)|
 | Website where the project is going to be implemented in a later period:| [www.toycarsaddict.club ](https://toycarsaddict.club/)|
-| Website where all my projects are staged including this one: | [www.svendolin-productions.club ](https://svendolin-productions.ch/)|
+| Website where all my projects are staged: | [www.svendolin-productions.club ](https://svendolin-productions.ch/)|
 
 
 <br />
@@ -26,7 +27,7 @@ _**In this webproject as a key goal of the SAE Bachelor program 6GST0XD10x I was
 [PERLEGO.COM](https://perlego.com/join-workspace?groupId=4dc18161-9e0a-4e9d-b920-2312bc914dc1) (Btw you need a Perlego account to access the content)
 
  **B) What does the project have to do with model cars?**
-* I have been running a very successful business revolving around 1/64th scale model cars for several years. I have built up a very large community, run several social media channels, a webshop and my own website/blog namely [www.toycarsaddict.club](https://toycarsaddict.club/) . The highlight is a subpage where the collection of me and a friend has been completely digitized. You can click on individual car brands or navigate using the A-Z buttons. You can check out this subpage [HERE](https://toycarsaddict.club/car-collection-overview/) . This is where I wanted to start with my project.
+* I have been running a very successful business revolving around 1:64 scale model cars for several years. I have built up a very large community, run several social media channels, a webshop and my own website/blog namely [www.toycarsaddict.club](https://toycarsaddict.club/) . The highlight is a subpage where the collection of me and a friend has been completely digitized. You can click on individual car brands or navigate using the A-Z buttons. You can check out this subpage [HERE](https://toycarsaddict.club/car-collection-overview/) . This is where I wanted to start with my project.
  
  **C) Why not simply install a Wordpress plugin?**
 * Yes, there are some plugins that are ideal for Wordpress and Elementor (as my website was built with Wordpress). Examples are SearchWP, Relevanssi, Elasticsearch, Jetpack or Ajax Search Pro. However, in addition to many advantages, I also see many construction sites and disadvantages. 
@@ -43,11 +44,9 @@ So I decided to build my own full stack search engine on a separate subpage.
 * It is therefore important to me that I can experiment on a subpage without having to worry about the main page being affected, as there are a lot of users on the main page every day and I have to ensure that everything runs smoothly.
 
  **E) What is clearly a MUST HAVE for my search engine?**
-* **Basic Search** - The search engine is designed to enable users to quickly and easily search for model cars that interest them: The most basic thing is to be able to enter a search term in a text field and then receive a list of model cars that contain this search term.
-* **Algorithm customization** – choose what content goes into your index and adjust the weighting according to your needs.
-* **Fuzzy matching** – this eliminates situations where your site search returns no results.
-* **Autosuggest** – suggest content as soon as users start typing (just like Google does it).
-* **Instant Search** - Smooth loading of search results without reloading the page.
+* **Basic Search** - The search engine is designed to enable users to quickly and easily search for model cars that interest them: The most basic thing is to be able to enter a search term in a text field and then receive a list of around 3 model cars that contain this search term based on full text of the exact search term.
+* **Semantic Search** – In case of wrong spelling, the search engine should still be able to display relevant results. The Semantic Search should work with a vector database to compare the similarity of the semantical meaning of the search term.
+* **Instant Search** - Smooth loading of search results without reloading the page with caching and routing
   
  **F) What is clearly a NICE TO HAVE for my search engine?**
  * **Reverse Image Search** - The search engine should have a reverse image search function as a nice to have, so that users can upload a picture and the search engine will show them similar model cars.
@@ -83,13 +82,11 @@ So I decided to build my own full stack search engine on a separate subpage.
 
 **Implementig the Technique of semantic searching with vector based search results:**
 * Instant Matches from Database => Also from those which are similar in meaning but dont exactly match the search term
-* If we get the model year of the car with a ()-bracket, the result was generated via the full text search
 
 **Full Text Search using a regular serverless relational database:**
 * Super powerful full text search capabilities of PostgreSQL needed for the best performance
 * When it matches the search term directly, it will be displayed first on the top as the most relevant result
-* If we get the model year of the car with a []-bracket, the result was generated via semantic search
-
+  
 **Advanced  Next.js routing patterns:**
 * URL switches but the core layout stays the same (Car with all the informations and stuff)
 * Keep logic in a way which does not require a reload of the page => Good for performance and later on for UX
@@ -97,18 +94,18 @@ So I decided to build my own full stack search engine on a separate subpage.
 **Caching Search Results:**
 * Transition back to search page happens instantly => Caching all search results in the background for the best performance
 
-**Product Catalogue:**
-* Filled with an ImageID and descriptions
-* Can be easily updated and extended
+**Product Catalogue as a Seeding Script:**
+* Filled with an ImageID and descriptions out of an EXEL sheet into an Array of Objects (Seeding Script)
+* Advantage: It can be easily updated and extended in the EXEL sheet and re-imported into the database again. Or you do it directly in the database with the Drizzle Kit Studio then.
 
 **Database:**
-* Product catalogue with content can be optimally managed using PostgreSQL
+* Product catalogue with content can be optimally managed using PostgreSQL (Data can be directly deleted there or adjusted without having to change the code or using SQL queries like push where from to thingy)
 * Easy access to data, quick queries and simple administration in a safe environment
 ---
 Building Process: 🔧
 ---
 
-**1) Homepage - Time to create a basic page without too many details and design elements with following tools:**
+**1) Homepage - Up first it's time to create a basic page without too many details and design elements with following tools:**
 
   1.1) **React.js** is the ideal choice for building a usable user interface as efficiently as possible using components. I had already used other Javascript libraries such as Angular and Vue.js in the past, but I had the most experience with React. Angular was covered in school lessons and used for our PARTUM MEDIA project. That's why I wanted to use something similar.
 
@@ -116,7 +113,7 @@ Building Process: 🔧
 
   1.3) **ShadCN** is a UI library for Next.js that I use here to incorporate some standards into the design. For the Bachelor of Science, I can focus on the technical aspects and not waste too much time explaining the UI / UX design.
 
-  1.4) **Tailwind** is a utility-first CSS framework, which provides its users with utility classes and standardized procedures for how the design will behave. So I don't need to spend ages styling individual CSS elements. With the CSS Tailwind Intellisense Extension for Visual Studio Code, I can see and select the utility classes directly in the editor and still have my CSS.
+  1.4) **Tailwind** is a utility-first CSS framework, which provides its users with utility classes and standardized procedures for how the design will behave. So I don't need to spend ages styling individual CSS elements. With the CSS Tailwind Intellisense Extension for Visual Studio Code, I can see and select the utility classes directly in the editor and still have my CSS. But still, Tailwind needs some time to learn and get used to it, so dont judge me too hard if the design is not perfect yet or is buggy here and there. All in all it still should be responsive and user-friendly.
 
   1.5) **Lucide.dev** is an icon library with a variety of SVG icons that I use here to spice up the design. The elements from ShadCN and Lucide should also behave responsively on the mobile device.
 
@@ -125,9 +122,7 @@ Building Process: 🔧
   * Functional, for example hitting the search will put the state in the URL and the search results will be displayed (also for sharing the URL or reloading), it should keep all the progress
   * The entered text should not be lost despite pressing the Escape key
   * It should be possible to start the search both by pressing the Enter key and by clicking on the search symbol
-  * Loading states: When we are in the process of searching and querying our database in the semantic search vector memory, we want to display a loading state. During the process, the user should know that the search is still running and that they can no longer type in anything
-  * We cannot process an array of queries or an undefined query, especially if it is not a string. Forwarding to the master page. Search.tsx is where all the magic happens
-
+  * Loading states: When we are in the process of searching and querying our database in the semantic search vector memory, I want to display a loading state. During the process, the user should know that the search is still running and that they can no longer type in anything.
 
 
 
@@ -140,7 +135,7 @@ Building Process: 🔧
     * If the search term corresponds 1:1 to a vehicle in the table (e.g. from the title), e.g. "Ferrari F40", then logically only the exact result is displayed
 
   * **3.2) Semantic Quering:**
-    * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> A vector database takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
+    * If the user makes a spelling mistake, e.g. "Ferari F40", the PostgreSQL full-text search would not display a relevant result **=> The vector database takes in text and converts this text into a vector with the help of OpenAI to compare the similarity of the semantical meaning**
     * Vectors, for example, are Javascript arrays, a static data structure: a numerical value is stored in each index, e.g. [0.3,0.8,0.95]
     * We define a dimension, e.g. 1536 => So we have 1536 numbers in this array, as long as this is also stored in the array.
     * We can solve this numerical representation of the meaning of the text with OpenAI 
@@ -150,7 +145,7 @@ Building Process: 🔧
 
 **4) Product Catalogue - Creating a product catalogue with a list of model cars + Product Preview**
 
-4.1) **Faker.js** offers me the possibility to embed a certain amount of realistic but fake data into my table of 26 (alphabetical) units, with wrong prices, wrong content etc.. However, the contents are still read correctly and filled into the tables according to their DNA.
+4.1) **Faker.js** offers me the possibility to embed a certain amount of realistic but fake data into my table of 50 (alphabetical) units, with wrong prices, wrong content etc.. However, the contents are still read correctly and filled into the tables according to their DNA.
 
 4.2) **Drizzle.orm** allows me to write SQL queries directly in my code, is highly secure and supports PostgreSQL. It is my bridge between the object-oriented search application and the relational database of Neontech PostgreSQL. With the Drizzle Kit Studio I can make adjustments directly.
 
@@ -246,11 +241,31 @@ The search parameters are an Object, each of these has a dynamic key which is a 
     ```
 
 
-    2.2 **To RUN A SERVER, check out the README.MD file in the project folder with the GET STARTED section**
+    2.2 **Time to run the DEV Server:**
 
     ```bash
-    npm run dev (<3 worked for me pretty well as well as CTRL + C to stop the server <3)
+    npm run dev // (CTRL + C to stop the server )
     ```
+
+    **What's the difference of RUN DEV and RUN BUILD?**
+
+    ![alt text](image.png)
+
+    NPM RUN DEV:
+
+    - Starts Next.js in development mode.
+    - Uses hot reloading so that changes are immediately visible in the browser.
+    - Does not create optimised builds - faster, but less efficient.
+    - Used locally to work on the app.
+
+    NPM RUN BUILD:
+
+    - Creates an optimised, static build for production.
+    - Minifies the code, removes unused files & optimises images/CSS.
+    - Checks whether the code can be compiled without errors.
+    - Required before deployment to Vercel, Netlify or own servers
+
+
     **[!] Important note: Always check the path: Rightclick on your folder in VSC > Open with integrated Terminal > Run the server from this path (because in my example I initialized .git outside the folder first which was wrong actually. Be sure to initialize git IN the direct folder!)**
 
     <br>
@@ -474,20 +489,13 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 
       In a NUTSHELL: Vercel is known for its outstanding deployment and hosting of web applications. With a strong focus on speed and ease of use, Vercel enables developers to publish and manage their projects effortlessly. As with the other applications, a GitHub account is required. More about that here: https://vercel.com/docs
 
-      **Environment variables** 
-      => As we are not uploading our .env file to GitHub, we need to set up the environment variables in Vercel. To do this, we go to the Vercel website and select our project. Then we go to the settings and click on ‘Environment Variables’. Here we can add the variables that we have in our .env file. This includes the API keys for the database and OpenAI.
-
-        - Simply install it with npm in your terminal:
-        ```bash
-         npm install openai
-        ```
-
-      10.1  Getting used to the OpenAI developer Platform:
-
-      - We need our API key to connect to the OpenAI API. We can find it in the dashboard: https://platform.openai.com/docs/overview
-       - Searching for "API keys" and copy the secret key to the .env file
-
-      <br />
+      **NPM RUN BUILD ERROR** 
+      => At the moment NPM RUN BUILD is not working due to a bug that we have raised in the issues section. Therefore the project cannot be uploaded to Vercel yet. 
+      
+      ```bash
+       if ('generateMetadata' in entry) {
+      Next.js build worker exited with code: 1 and signal: null
+      ```
 
       <br />
       <br />
@@ -538,10 +546,10 @@ The search parameters are an Object, each of these has a dynamic key which is a 
 ***
 ## DEBUGGING and ERROR LOG ❌
 ***
-3 issues have been detected, 3 answers have been given, 3 solutions have been made.
+6 issues have been detected, 6 answers have been given, 5 solutions have been made.
 Check out our ISSUES SECTION for more information: [HERE](https://github.com/Svendolin/Bachelor-Project-SKA2025/issues)
 
 | Questions / Issues | Anwers | Solutions |
 |:--------------|:-------------:|--------------:|
-| 5 | 5 | 5 |
+| 6 | 6 | 5 |
 
