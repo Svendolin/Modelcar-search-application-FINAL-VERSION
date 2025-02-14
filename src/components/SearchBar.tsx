@@ -8,7 +8,7 @@ import { Input } from '../components/ui/input';
 import { useRef, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-{/* Getting the search params into our SearchBar component */}
+{/* Getting the search params into our SearchBar component - Target is due to routing to put the search query into the URL:*/}
 
 const SearchBar = () => {
   const searchParams = useSearchParams()

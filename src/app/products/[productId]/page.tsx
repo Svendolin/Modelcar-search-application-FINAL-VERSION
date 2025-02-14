@@ -1,5 +1,8 @@
+
+
+
 // Over here we are fetching the product details from the database and displaying it on the page.
-// We are using the product id from the url to fetch the product details from the database dynamically
+// We are using the product id from the url to fetch the product details from the database dynamically.
 // => This is the place where we display the product details like name, price, description, image in full size:
 
 import { db } from '@/db'
@@ -12,36 +15,17 @@ import { Check, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 // Needed here to get the product id passed dynamically thanks to []-Folder [productId] in the page url when we render it:
-interface PageProps {
-  params: Promise<{ productId: string }>;
-  // ... ggf. weitere Props wie searchParams
-}
+ interface PageProps {
+    params: {
+    productId: string
+    }
+    // Falls du searchParams benötigst:
+     searchParams?: { [key: string]: string | string[] | undefined }
+ }
 
 // This is the way we get access to the product id is by using the params object that is passed to the Page function here:
-export async function generateMetadata({ params }: PageProps) {
-  const { productId } = await params;
-
-  if (!productId) return { title: 'Product Not Found' };
-
-  const [product] = await db
-    .select()
-    .from(productsTable)
-    .where(eq(productsTable.id, productId));
-
-  if (!product) return { title: 'Product Not Found' };
-
-  return {
-    title: product.name,
-    description: product.description,
-  };
-}
-
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ productId: string }>;
-}) {
-  const { productId } = await params; 
+const Page = async ({ params }: PageProps) => {
+  const { productId } = params;
 
   // If the product id is not present in the url, we are returning a 404 page.
   // For example, if the url is /products/123 and the product with id 123 is not present in the database, we are returning a 404 page.
@@ -145,3 +129,5 @@ export default async function ProductPage({
     </div>
   )
 }
+
+export default Page

@@ -1,4 +1,4 @@
-
+// This page.tsx file is the content that will be shown under the search bar, it displays the core logic of the search functionality
 import { db } from "@/db";
 import { Product, productsTable } from "@/db/schema";
 import { sql } from "drizzle-orm";
@@ -67,7 +67,7 @@ if(products.length < 3) {
     
   }).map(({metadata}) => metadata!) // To avoid being undefined, because we includeMetadata
 
-  products.push(...vectorProducts) // We are pushing the vectorProducts into the products array
+  products.push(...vectorProducts) // Pushing the vectorProducts into the products array
 }
 
 
@@ -89,7 +89,7 @@ if (products.length === 0) {
     </div>
   )
 }
-// The area where we are rendering the products in a list block below the search bar of 3 products
+// The area where we are rendering the products in a list block below the search bar of 3 products with the image, name, description and value:
 return (
   <ul className="py-4 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md">
     {products.slice(0, 3).map((product) => (

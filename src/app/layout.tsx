@@ -52,7 +52,8 @@ export default function RootLayout({
               fill='url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)'
             />
           </svg>
-          { /* Tailwindclasses sm = Small devices and upwards / lg = large device //<Icons.Sparkles className="h-16 w-16" /> */ }
+          { /* Tailwindclasses sm = Small devices and upwards / lg = large device //<Icons.Sparkles className="h-16 w-16" />
+          // This here will be the major background design */ }
           <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex gap-16 lg:px-8 lg:py-24">
             <div className="h-full w-full flex flex-col items-center gap-4">
               

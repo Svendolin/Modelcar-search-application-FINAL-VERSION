@@ -1,7 +1,7 @@
 import type { LucideProps } from "lucide-react";
 
 
-{/*Object, not a standard react component* - Maybe we need to change that one*/}
+{/*Object, not a standard react component* - It will be definitely changed afterwards with my own logo as an IMG with some additional details :D */}
 export const Icons = {
 
   Sparkles: (props: LucideProps) => (
